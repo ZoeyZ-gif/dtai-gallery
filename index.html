@@ -86,10 +86,8 @@
     .card.visible { animation: cardIn 0.5s ease-out forwards; }
     @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
     .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), rgba(230,57,70,0.3)); transform: scaleX(0); transition: transform 0.4s ease; }
-    .card::after { content: ''; position: absolute; inset: -35%; background: linear-gradient(120deg, transparent 25%, rgba(255,255,255,0.12) 45%, transparent 62%); transform: translateX(-120%) rotate(8deg); transition: transform 0.7s ease; pointer-events: none; }
     .card:hover { transform: translateY(-8px) scale(1.01); border-color: rgba(230,57,70,0.5); box-shadow: 0 22px 60px rgba(230,57,70,0.16); }
     .card:hover::before { transform: scaleX(1); }
-    .card:hover::after { transform: translateX(120%) rotate(8deg); }
     .card-preview { position: absolute; inset: auto 16px 16px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border-radius: 12px; background: linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03)); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(10px); box-shadow: 0 14px 30px rgba(0,0,0,0.22); opacity: 0; transform: translateY(18px); transition: opacity 0.28s ease, transform 0.28s ease, border-color 0.28s ease; pointer-events: none; }
     .card-preview-label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
     .card-preview-value { font-size: 0.78rem; color: var(--text-primary); white-space: nowrap; }
@@ -425,8 +423,7 @@ function makeCard(p, i, simple, isPersonal) {
     : '';
 
   const scopes = Array.isArray(p.scopes) ? p.scopes.join('</span><span class="tag tag-client">') : '';
-  const previewCount = Array.isArray(p.qr) ? p.qr.length : 0;
-  const previewText = previewCount > 0 ? `查看详情 · ${previewCount} 个入口` : '查看详情';
+  const previewText = '获取下载二维码';
 
   card.innerHTML = `
     ${metaRow}
