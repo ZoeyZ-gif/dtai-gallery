@@ -1,0 +1,8 @@
+{
+  "name": "dtai-gallery",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@coze/api": "^1.3.9"
+  }
+}

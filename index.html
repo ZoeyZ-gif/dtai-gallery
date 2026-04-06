@@ -221,15 +221,19 @@
     .chat-msg { max-width: 85%; font-size: 0.85rem; line-height: 1.55; padding: 9px 13px; border-radius: 12px; }
     .chat-msg.user { align-self: flex-end; background: var(--accent); color: white; border-bottom-right-radius: 4px; }
     .chat-msg.ai { align-self: flex-start; background: rgba(255,255,255,0.05); color: var(--text-primary); border-bottom-left-radius: 4px; }
+    .chat-msg.pending { color: var(--text-secondary); }
+    .chat-msg.error { background: rgba(230,57,70,0.08); border: 1px solid rgba(230,57,70,0.2); color: #ffb3ba; }
     .chat-suggestions { display: flex; gap: 6px; flex-wrap: wrap; padding: 8px 14px; border-top: 1px solid var(--card-border); flex-shrink: 0; }
     .chat-suggestion { background: rgba(230,57,70,0.08); border: 1px solid rgba(230,57,70,0.2); color: var(--accent); font-size: 0.72rem; padding: 4px 10px; border-radius: 12px; cursor: pointer; transition: all 0.2s; }
     .chat-suggestion:hover { background: rgba(230,57,70,0.18); }
+    .chat-suggestion:disabled { opacity: 0.5; cursor: not-allowed; }
     .chat-input-area { padding: 10px 14px; border-top: 1px solid var(--card-border); display: flex; gap: 8px; flex-shrink: 0; }
     .chat-input { flex: 1; background: rgba(255,255,255,0.04); border: 1px solid var(--card-border); border-radius: 8px; color: var(--text-primary); font-family: var(--font-body); font-size: 0.85rem; padding: 8px 12px; outline: none; resize: none; transition: border-color 0.2s; min-height: 36px; max-height: 80px; }
     .chat-input:focus { border-color: var(--accent); }
     .chat-input::placeholder { color: var(--text-muted); }
     .chat-send { background: var(--accent); border: none; color: white; width: 36px; height: 36px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: background 0.2s; flex-shrink: 0; align-self: flex-end; }
     .chat-send:hover { background: var(--accent-hover); }
+    .chat-send:disabled { opacity: 0.55; cursor: not-allowed; }
 
     .hidden { display: none !important; }
 
@@ -293,15 +297,13 @@
   <div class="chat-panel" id="chat-panel">
     <div class="chat-header">
       <div class="chat-header-title">DTAI 小助手</div>
-      <div class="chat-header-hint">可提需求，也可咨询产品功能</div>
+      <div class="chat-header-hint">由 Coze 智能体提供服务</div>
       <button class="chat-close" onclick="toggleChat(false)">✕</button>
     </div>
     <div class="chat-messages" id="chat-messages">
       <div class="chat-msg ai">
-        你好！我是 DTAI 在线助手，可以帮你：
-        <br>· 了解各产品的功能和使用方式
-        <br>· 提出新的产品需求
-        <br><br>试试快捷问题：
+        你好！我是 DTAI 在线助手，可以帮你了解产品能力、使用方式，也可以收集你的新需求。
+        <br><br>试试下面这些问题：
       </div>
     </div>
     <div class="chat-suggestions">
@@ -645,6 +647,9 @@ function switchTab(tab) {
 
 // ===== CHAT =====
 let chatOpen = false;
+let chatBusy = false;
+const COZE_PROXY_ENDPOINT = window.__DTAI_COZE_PROXY_ENDPOINT__ || '/api/coze-chat';
+const chatUserId = getChatUserId();
 
 function toggleChat(force) {
   chatOpen = force !== undefined ? force : !chatOpen;
@@ -655,22 +660,37 @@ function handleChatKeydown(e) {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); }
 }
 
-function sendChat() {
+async function sendChat() {
+  if (chatBusy) return;
   const input = document.getElementById('chat-input');
   const text = input.value.trim();
   if (!text) return;
   appendMessage('user', text);
   input.value = '';
-  setTimeout(() => appendMessage('ai', getAIResponse(text)), 500);
+  const pendingMessage = appendMessage('ai pending', '正在思考...');
+  setChatBusy(true);
+
+  try {
+    const reply = await requestCozeReply(text);
+    pendingMessage.className = 'chat-msg ai';
+    pendingMessage.innerHTML = formatMessageText(reply);
+  } catch (error) {
+    console.error('Coze chat failed:', error);
+    pendingMessage.className = 'chat-msg ai error';
+    pendingMessage.innerHTML = formatMessageText('助手暂时连接失败，请稍后再试。');
+  } finally {
+    setChatBusy(false);
+  }
 }
 
 function appendMessage(role, text) {
   const msgs = document.getElementById('chat-messages');
   const div = document.createElement('div');
   div.className = `chat-msg ${role}`;
-  div.innerHTML = text.replace(/\n/g, '<br>');
+  div.innerHTML = formatMessageText(text);
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
+  return div;
 }
 
 function askSuggestion(q) {
@@ -678,21 +698,61 @@ function askSuggestion(q) {
   sendChat();
 }
 
-function getAIResponse(question) {
-  const q = question.toLowerCase();
-  if (q.includes('geo') && (q.includes('怎么') || q.includes('使用') || q.includes('优化'))) {
-    return `<strong>GEO Reviewer</strong>：<br><br>1. 飞书给 DTAI 机器人发「GEO」关键词<br>2. 发文案给它<br>3. ERE+ICA 七维度分析 → 优化建议<br>4. 可接受 / 编辑 / 拒绝<br><br>支持博客、官网、EDM、社媒等。`;
+async function requestCozeReply(message) {
+  const response = await fetch(COZE_PROXY_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      message,
+      userId: chatUserId,
+    }),
+  });
+
+  let data = null;
+  try {
+    data = await response.json();
+  } catch (error) {
+    throw new Error('invalid proxy response');
   }
-  if (q.includes('书签') || (q.includes('采集') && (q.includes('社媒') || q.includes('平台')))) {
-    return `<strong>社媒源数据采集插件</strong>支持：<br><br>· 微信（近7天）· 微博 · 小红书 · 抖音 · 快手<br><br>联系 DTAI 团队获取安装链接。`;
+
+  if (!response.ok || !data?.reply) {
+    throw new Error(data?.error || 'proxy request failed');
   }
-  if (q.includes('gha') || q.includes('周报') || q.includes('报告')) {
-    return `<strong>GHA报告生成器</strong> v1.1：<br><br>聚合 Booking + 飞书表格 + 社媒数据，自动生成 8 页 HTML 周报。<br><br>联系 DTAI 团队配置。`;
-  }
-  if (q.includes('会议') || q.includes('纪要')) {
-    return `<strong>智能会议纪要</strong> v1.3：<br><br>录音 → AI 转写 → 结构化 Markdown<br>多语种翻译 · 说话人分离 · next steps 高亮 · 后台 subagent 处理。`;
-  }
-  return `建议联系 DTAI 团队获取准确答案。<br><br>也可以试试问：<br>· GEO Reviewer 怎么用？<br>· 社媒采集支持哪些平台？<br>· GHA报告如何配置？`;
+
+  return data.reply;
+}
+
+function setChatBusy(isBusy) {
+  chatBusy = isBusy;
+  document.getElementById('chat-input').disabled = isBusy;
+  document.querySelector('.chat-send').disabled = isBusy;
+  document.querySelectorAll('.chat-suggestion').forEach(button => {
+    button.disabled = isBusy;
+  });
+}
+
+function getChatUserId() {
+  const storageKey = 'dtai-coze-user-id';
+  const existing = window.localStorage.getItem(storageKey);
+  if (existing) return existing;
+  const generated = `dtai-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+  window.localStorage.setItem(storageKey, generated);
+  return generated;
+}
+
+function formatMessageText(text) {
+  return escapeHtml(String(text)).replace(/\n/g, '<br>');
+}
+
+function escapeHtml(text) {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 // ===== KEYBOARD =====
