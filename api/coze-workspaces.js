@@ -34,35 +34,24 @@ export default async function handler(req, res) {
   }
 
   try {
-    const workspaceId = typeof req.query?.workspace_id === 'string'
-      ? req.query.workspace_id.trim()
-      : '';
-
-    if (!workspaceId) {
-      return res.status(400).json({
-        error: 'workspace_id is required',
-      });
-    }
-
-    const result = await client.bots.listNew({
-      workspace_id: workspaceId,
+    const result = await client.workspaces.list({
       page_num: 1,
       page_size: 100,
     });
 
     return res.status(200).json({
-      total: result.total,
-      items: (result.items || []).map(item => ({
+      total: result.total_count,
+      items: (result.workspaces || []).map(item => ({
         id: item.id,
         name: item.name,
-        description: item.description,
-        isPublished: item.is_published,
+        roleType: item.role_type,
+        workspaceType: item.workspace_type,
       })),
     });
   } catch (error) {
-    console.error('Coze list bots error:', error);
+    console.error('Coze list workspaces error:', error);
     return res.status(500).json({
-      error: 'Failed to list Coze bots',
+      error: 'Failed to list Coze workspaces',
     });
   }
 }
