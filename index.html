@@ -439,6 +439,15 @@ function makeCard(p, i, simple, isPersonal) {
 
   const scopes = Array.isArray(p.scopes) ? p.scopes.join('</span><span class="tag tag-client">') : '';
   const previewText = '获取下载二维码';
+  const previewHtml = simple ? '' : `
+    <div class="card-preview">
+      <div>
+        <div class="card-preview-label">Preview</div>
+        <div class="card-preview-value">${previewText}</div>
+      </div>
+      <span class="card-preview-arrow">↗</span>
+    </div>
+  `;
 
   card.innerHTML = `
     ${metaRow}
@@ -449,13 +458,7 @@ function makeCard(p, i, simple, isPersonal) {
     </div>
     <div class="card-highlights">${p.highlights}</div>
     ${changelogHtml}
-    <div class="card-preview">
-      <div>
-        <div class="card-preview-label">Preview</div>
-        <div class="card-preview-value">${previewText}</div>
-      </div>
-      <span class="card-preview-arrow">↗</span>
-    </div>
+    ${previewHtml}
   `;
 
   card.addEventListener('click', () => openModal(p));
