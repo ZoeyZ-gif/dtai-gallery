@@ -151,13 +151,22 @@
     .modal-overlay.open-visible { opacity: 1; }
     .modal { background:
       radial-gradient(circle at top center, rgba(230,57,70,0.08), transparent 34%),
+      linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0)),
       var(--card-bg);
-      border: 1px solid var(--card-border); border-radius: var(--radius); max-width: 560px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 32px; position: relative; animation: modalIn 0.36s cubic-bezier(.22,1,.36,1); box-shadow: 0 28px 90px rgba(0,0,0,0.56); }
+      border: 1px solid var(--card-border); border-radius: 18px; max-width: 640px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 32px; position: relative; animation: modalIn 0.36s cubic-bezier(.22,1,.36,1); box-shadow: 0 28px 90px rgba(0,0,0,0.56); }
     @keyframes modalIn { from { opacity: 0; transform: scale(0.96) translateY(16px); } to { opacity: 1; transform: scale(1) translateY(0); } }
     .modal-close { position: absolute; top: 14px; right: 14px; background: rgba(255,255,255,0.06); border: none; color: var(--text-secondary); width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
     .modal-close:hover { background: rgba(230,57,70,0.15); color: var(--accent); }
-    .modal-title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; margin-bottom: 14px; padding-right: 36px; }
-    .modal-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+    .modal-header { display: grid; grid-template-columns: minmax(0, 1fr) 160px; gap: 24px; padding-bottom: 18px; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .modal-title-block { min-width: 0; }
+    .modal-kicker { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 10px; }
+    .modal-title { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; margin-bottom: 14px; padding-right: 36px; line-height: 1.2; }
+    .modal-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 0; }
+    .modal-meta-panel { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 12px; align-self: start; }
+    .modal-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .modal-meta-label { font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; }
+    .modal-meta-value { font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-primary); line-height: 1.5; }
+    .modal-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
     .modal > * { opacity: 0; transform: translateY(10px); animation: modalSectionIn 0.42s ease-out forwards; }
     .modal > *:nth-child(1) { animation-delay: 0.03s; }
     .modal > *:nth-child(2) { animation-delay: 0.08s; }
@@ -169,22 +178,28 @@
     @keyframes modalSectionIn {
       to { opacity: 1; transform: translateY(0); }
     }
-    .modal-section { margin-bottom: 18px; }
+    .modal-section { margin-bottom: 0; padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .modal-body .modal-section:first-child { border-top: none; padding-top: 0; }
     .modal-section h4 { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
     .modal-section p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
     .modal-changelog { list-style: none; padding: 0; }
     .modal-changelog li { font-size: 0.85rem; color: var(--text-secondary); padding: 3px 0 3px 14px; position: relative; line-height: 1.55; }
     .modal-changelog li::before { content: '↑'; position: absolute; left: 0; color: var(--accent); font-size: 0.7rem; top: 3px; }
-    .modal-qr { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 18px; margin-top: 4px; }
-    .modal-qr h4 { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+    .modal-qr { padding: 18px 0 0; margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .modal-qr h4 { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px; }
+    .modal-qr-note { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 14px; line-height: 1.6; }
     .qr-grid { display: flex; gap: 16px; flex-wrap: wrap; }
-    .qr-item { text-align: center; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 10px; transition: transform 0.26s ease, border-color 0.26s ease, box-shadow 0.26s ease; }
-    .qr-item:hover { transform: translateY(-4px); border-color: rgba(230,57,70,0.24); box-shadow: 0 16px 36px rgba(230,57,70,0.08); }
-    .qr-item img { width: 140px; height: 140px; border-radius: 8px; border: 1px solid var(--card-border); display: block; margin-bottom: 8px; object-fit: cover; transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease; }
-    .qr-item:hover img { transform: scale(1.03); border-color: rgba(230,57,70,0.24); box-shadow: 0 10px 28px rgba(0,0,0,0.28); }
-    .qr-item .qr-label { font-size: 0.72rem; color: var(--text-muted); transition: color 0.24s ease; }
-    .qr-item:hover .qr-label { color: var(--text-primary); }
+    .qr-item { text-align: center; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 10px; }
+    .qr-item img { width: 140px; height: 140px; border-radius: 8px; border: 1px solid var(--card-border); display: block; margin-bottom: 8px; object-fit: cover; }
+    .qr-item .qr-label { font-size: 0.72rem; color: var(--text-muted); }
     .qr-placeholder { width: 140px; height: 140px; border-radius: 8px; border: 1px dashed var(--card-border); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: var(--text-muted); text-align: center; padding: 8px; }
+
+    @media (max-width: 720px) {
+      .modal { padding: 24px 20px; }
+      .modal-header { grid-template-columns: 1fr; gap: 14px; }
+      .modal-title { font-size: 1.45rem; }
+      .modal-meta-panel { gap: 10px; }
+    }
 
     /* Chat Widget */
     .chat-widget { position: fixed; bottom: 28px; right: 28px; z-index: 500; }
@@ -534,6 +549,7 @@ function openModal(p) {
   if (p.qr && p.qr.length > 0) {
     qrHtml = `<div class="modal-qr">
       <h4>扫码获取</h4>
+      <div class="modal-qr-note">扫描对应二维码即可获取下载链接或使用说明。</div>
       <div class="qr-grid">
         ${p.qr.map(item => `<div class="qr-item"><img src="${item.url}" alt="${item.label}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="qr-placeholder" style="display:none">图片加载失败</div><div class="qr-label">${item.label}</div></div>`).join('')}
       </div>
@@ -541,6 +557,7 @@ function openModal(p) {
   } else {
     qrHtml = `<div class="modal-qr">
       <h4>扫码获取</h4>
+      <div class="modal-qr-note">当前项目的二维码材料还未补充，可联系 DTAI 团队获取。</div>
       <div class="qr-grid">
         <div class="qr-placeholder">二维码待补充<br><span style="font-size:0.7rem;margin-top:4px;display:block">联系 DTAI 团队</span></div>
       </div>
@@ -548,26 +565,41 @@ function openModal(p) {
   }
 
   const versionDateLine = [p.version ? `v${p.version}` : '', p.updateDate || ''].filter(Boolean).join(' · ');
-  const versionDateHtml = versionDateLine
-    ? `<div class="modal-section"><h4>版本 · 更新</h4><p style="font-family:var(--font-mono);font-size:0.82rem;color:var(--green)">${versionDateLine}</p></div>`
-    : '';
+  const metaVersionValue = versionDateLine || '待更新';
+  const scopesLine = Array.isArray(p.scopes) && p.scopes.length ? p.scopes.join(' / ') : '通用';
 
   const scopes = Array.isArray(p.scopes) ? p.scopes.join('</span><span class="tag tag-client">') : '';
 
   modal.innerHTML = `
     <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="modal-title">${p.name}</div>
-    <div class="modal-tags">
-      <span class="tag tag-type">${p.type}</span>
-      ${scopes ? `<span class="tag tag-client">${scopes}</span>` : ''}
+    <div class="modal-header">
+      <div class="modal-title-block">
+        <div class="modal-kicker">DTAI Gallery</div>
+        <div class="modal-title">${p.name}</div>
+        <div class="modal-tags">
+          <span class="tag tag-type">${p.type}</span>
+          ${scopes ? `<span class="tag tag-client">${scopes}</span>` : ''}
+        </div>
+      </div>
+      <div class="modal-meta-panel">
+        <div class="modal-meta-item">
+          <div class="modal-meta-label">版本 / 更新</div>
+          <div class="modal-meta-value">${metaVersionValue}</div>
+        </div>
+        <div class="modal-meta-item">
+          <div class="modal-meta-label">适用范围</div>
+          <div class="modal-meta-value">${scopesLine}</div>
+        </div>
+      </div>
     </div>
-    ${versionDateHtml}
-    <div class="modal-section">
-      <h4>功能亮点</h4>
-      <p>${p.highlights}</p>
+    <div class="modal-body">
+      <div class="modal-section">
+        <h4>项目说明</h4>
+        <p>${p.highlights}</p>
+      </div>
+      ${changelogHtml}
+      ${qrHtml}
     </div>
-    ${changelogHtml}
-    ${qrHtml}
   `;
 
   const overlay = document.getElementById('modal-overlay');
