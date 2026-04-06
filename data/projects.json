@@ -13,10 +13,7 @@
         "2. 兼容xlsx格式的微信阅读数表格"
       ],
       "qr": [
-        {
-          "label": "GHA报告生成器",
-          "url": "https://raw.githubusercontent.com/ZoeyZ-gif/dtai-gallery/main/GHA-report.png"
-        }
+        { "label": "使用说明", "url": "https://raw.githubusercontent.com/ZoeyZ-gif/dtai-gallery/main/dtai-gallery/GHA-report.png" }
       ]
     },
     {
@@ -31,10 +28,7 @@
         "修复英文引号可能导致的bug"
       ],
       "qr": [
-        {
-          "label": "GEO Reviewer",
-          "url": "https://raw.githubusercontent.com/ZoeyZ-gif/dtai-gallery/main/geo-reviewer.png"
-        }
+        { "label": "GEO Reviewer", "url": "https://raw.githubusercontent.com/ZoeyZ-gif/dtai-gallery/main/dtai-gallery/geo-reviewer.png" }
       ]
     },
     {
@@ -50,14 +44,8 @@
         "2. 修复微博不自动展开全文和跳过置顶的问题"
       ],
       "qr": [
-        {
-          "label": "数据采集插件",
-          "url": "https://raw.githubusercontent.com/ZoeyZ-gif/dtai-gallery/main/monthly-report-Bookmarklet.png"
-        },
-        {
-          "label": "使用说明",
-          "url": "https://raw.githubusercontent.com/ZoeyZ-gif/dtai-gallery/main/Monthly-report-guide.png"
-        }
+        { "label": "月报采集工具", "url": "https://raw.githubusercontent.com/ZoeyZ-gif/dtai-gallery/main/dtai-gallery/1775413175930_%E6%9C%88%E6%8A%A5%E9%87%87%E9%9B%86%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%8620240302.html_qrcode.png" },
+        { "label": "使用说明", "url": "https://raw.githubusercontent.com/ZoeyZ-gif/dtai-gallery/main/dtai-gallery/%E6%96%B0%E7%89%88%E6%9C%88%E6%8A%A5%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E%E4%BA%8C%E7%BB%B4%E7%A0%81.png" }
       ]
     }
   ],
