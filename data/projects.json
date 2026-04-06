@@ -14,7 +14,7 @@
       ],
       "qr": [
         {
-          "label": "使用说明",
+          "label": "GHA报告生成器",
           "url": "https://raw.githubusercontent.com/ZoeyZ-gif/dtai-gallery/main/GHA-report.png"
         }
       ]
@@ -51,7 +51,7 @@
       ],
       "qr": [
         {
-          "label": "月报采集工具",
+          "label": "数据采集插件",
           "url": "https://raw.githubusercontent.com/ZoeyZ-gif/dtai-gallery/main/monthly-report-Bookmarklet.png"
         },
         {
