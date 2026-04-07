@@ -235,6 +235,9 @@
       .card, .card:hover, .chat-btn, .qr-item, .qr-item img, .hero::before, .hero-title, .hero-sub, .chat-hint, .hero-stats { transform: none !important; }
     }
   </style>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
 </head>
 <body>
 
@@ -695,6 +698,8 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 initHeroParallax();
 init();
 </script>
+
+<script defer src="/_vercel/insights/script.js"></script>
 
 </body>
 </html>
