@@ -3,20 +3,19 @@
     {
       "id": "gha-report-generator",
       "name": "GHA报告生成器",
-      "version": "2.0",
+      "version": "2.1",
       "updateDate": "2026-04-07",
       "type": "Skill",
       "scopes": ["GHA探索之旅"],
       "highlights": "快速生成GHA探索之旅标准化报告，支持自选任意时间段，包含订单、社媒、客诉、投放、用户行为，并自动生成洞察分析。",
       "changelog": [
-        "新增第九页：当期入住率分析",
-        "1. 修复没有紧急负面舆情时priority case显示N/A的问题",
-        "2. 兼容xlsx格式的微信阅读数表格"
+        "1. 增加第九页：当期入住率分析",
+        "2. 修复微信xls格式的表格不了的问题"
       ],
       "qr": [
         {
           "label": "Skill 下载",
-          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkmyMe0cW"
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAksZ4kzFh"
         }
       ]
     },
