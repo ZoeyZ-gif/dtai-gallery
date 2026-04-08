@@ -3,19 +3,20 @@
     {
       "id": "gha-report-generator",
       "name": "GHA报告生成器",
-      "version": "2.1",
-      "updateDate": "2026-04-07",
+      "version": "3.0",
+      "updateDate": "2026-04-09",
       "type": "Skill",
       "scopes": ["GHA探索之旅"],
       "highlights": "快速生成GHA探索之旅标准化报告，支持自选任意时间段，包含订单、社媒、客诉、投放、用户行为，并自动生成洞察分析。",
       "changelog": [
-        "1. 增加第九页：当期入住率分析",
-        "2. 修复微信xls格式的表格读取不了的问题"
+        "1. 新增执行回执功能，方便复核是否漏抓数据",
+        "2. 优化Insight提示词，避免尖锐批评和不合理的建议",
+        "3. 增加第九页：当期入住率分析"
       ],
       "qr": [
         {
           "label": "Skill 下载",
-          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAksZ4kzFh"
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkmXj0TUk"
         }
       ]
     },
@@ -40,19 +41,21 @@
     {
       "id": "sm-collector",
       "name": "社交媒体源数据采集插件",
-      "version": "1.1",
-      "updateDate": "2026-04-02",
+      "version": "1.2",
+      "updateDate": "2026-04-09",
       "type": "插件",
       "scopes": ["Social Media"],
       "highlights": "一键采集五大主流社媒平台上官方不提供下载的公开数据，如主页爬虫、粉丝属性等，是使用报告生成器之前的必装插件。",
       "changelog": [
-        "1. 修复7日内发布的微信抓不到的问题",
-        "2. 修复微博不自动展开全文和跳过置顶的问题"
+        "1. 嵌入微博数据中心外链，可直接跳转",
+        "2. 自动抓取微博当前粉丝数，也支持粉丝过万的账号手动修改",
+        "3. 修复7天内发布的微信图文日期格式特殊的问题",
+        "4. 修复微博展开全文和跳过置顶的问题"
       ],
       "qr": [
         {
           "label": "插件下载",
-          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkl1BXz7G"
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAk1WXBzpg"
         },
         {
           "label": "使用说明",
