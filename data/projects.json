@@ -78,7 +78,8 @@
     { "id": "topic-assistant", "name": "选题助手", "type": "Skill", "scopes": ["Content", "Social Media", "Media"], "highlights": "可定制客户、渠道、内容类型，为你推荐选题，并给出钩子、展现形式、重点内容的撰写建议。" },
     { "id": "site-miniapp-qa-report", "name": "网站/小程序质检报告生成器", "type": "Skill", "scopes": ["Content"], "highlights": "生成从检查→优化方案→实施计划→验收标准的全套SEO与GEO质检报告" },
     { "id": "sales-bank", "name": "Sales bank", "type": "服务", "scopes": ["BD"], "highlights": "暂无" },
-    { "id": "video-analysis-agent", "name": "视频拉片Agent", "type": "Skill", "scopes": ["Video"], "highlights": "具有下载→智能拉片和文案提取功能的短视频智囊" }
+    { "id": "video-analysis-agent", "name": "视频拉片Agent", "type": "Skill", "scopes": ["Video"], "highlights": "具有下载→智能拉片和文案提取功能的短视频智囊" },
+    { "id": "travel-policy-agent", "name": "旅游政策巡检Agent", "type": "Skill", "scopes": ["Content"], "highlights": "每周自动巡检指定网站与平台，汇总签证、免签、离境退税等相关新内容，输出表格、政策摘要与官网更新建议。" }
   ],
   "personal": [
     {
