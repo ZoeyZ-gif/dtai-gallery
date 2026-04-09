@@ -83,7 +83,8 @@
     { "id": "sales-bank", "name": "Sales bank", "type": "服务", "scopes": ["BD"], "highlights": "暂无" },
     { "id": "video-analysis-agent", "name": "视频拉片Agent", "type": "Skill", "scopes": ["Video"], "highlights": "具有下载→智能拉片和文案提取功能的短视频智囊" },
     { "id": "travel-policy-agent", "name": "旅游政策巡检Agent", "type": "Skill", "scopes": ["Content"], "highlights": "每周自动巡检指定网站与平台，汇总签证、免签、离境退税等相关新内容，输出表格、政策摘要与官网更新建议。" },
-    { "id": "research-dashboard-service", "name": "研究数据看板服务", "type": "服务", "scopes": ["Research"], "highlights": "定期从指定网址抓取并处理PDF、数据看板等多源数据，按国家与时间维度生成可配置频率的研究看板。" }
+    { "id": "research-dashboard-service", "name": "研究数据看板服务", "type": "服务", "scopes": ["Research"], "highlights": "定期从指定网址抓取并处理PDF、数据看板等多源数据，按国家与时间维度生成可配置频率的研究看板。" },
+    { "id": "destination-insight-monthly", "name": "目的地咨询月报助手", "type": "Skill", "scopes": ["Research"], "highlights": "围绕出境旅游趋势、航司动态、中东市场、竞品活动与MICE新闻，自动整理研究资讯并生成可发送客户的月报。" }
   ],
   "personal": [
     {
