@@ -55,15 +55,15 @@
     .hero { padding: 90px 0 60px; text-align: center; position: relative; overflow: clip; }
     .hero::before { content: ''; position: absolute; inset: 4% 18% auto; height: 220px; border-radius: 999px; background: radial-gradient(ellipse, rgba(230,57,70,0.16) 0%, rgba(230,57,70,0.03) 46%, transparent 76%); filter: blur(22px); opacity: 0.9; pointer-events: none; transform: translate3d(var(--hero-glow-x, 0px), var(--hero-glow-y, 0px), 0); will-change: transform; }
     .hero > .container { position: relative; }
-    .hero-title { font-family: var(--font-display); font-size: clamp(2.8rem, 8vw, 5.5rem); font-weight: 900; letter-spacing: 0.04em; margin-bottom: 20px; opacity: 0; animation: fadeUp 0.9s ease-out 0.15s forwards; position: relative; transform: translate3d(var(--hero-title-x, 0px), var(--hero-title-y, 0px), 0); will-change: transform; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2.8rem, 8vw, 5.5rem); font-weight: 900; letter-spacing: 0.04em; margin-bottom: 20px; opacity: 1; animation: fadeUp 0.9s ease-out 0.15s forwards; position: relative; transform: translate3d(var(--hero-title-x, 0px), var(--hero-title-y, 0px), 0); will-change: transform; }
     .hero-title .accent { color: var(--accent); }
     .hero-title::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 300px; height: 80px; background: radial-gradient(ellipse, rgba(230,57,70,0.18) 0%, transparent 70%); filter: blur(30px); z-index: -1; animation: glowPulse 3s ease-in-out infinite alternate; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes glowPulse { 0% { opacity: 0.6; transform: translate(-50%,-50%) scale(1); } 100% { opacity: 1; transform: translate(-50%,-50%) scale(1.2); } }
-    .hero-sub { font-size: 1rem; color: var(--text-secondary); max-width: 500px; margin: 0 auto 24px; opacity: 0; animation: fadeUp 0.8s ease-out 0.3s forwards; transform: translate3d(var(--hero-sub-x, 0px), var(--hero-sub-y, 0px), 0); will-change: transform; }
-    .chat-hint { display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--text-muted); background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); border-radius: 20px; padding: 6px 16px; margin-bottom: 36px; opacity: 0; animation: fadeUp 0.8s ease-out 0.45s forwards; transform: translate3d(var(--hero-hint-x, 0px), var(--hero-hint-y, 0px), 0); will-change: transform; }
+    .hero-sub { font-size: 1rem; color: var(--text-secondary); max-width: 500px; margin: 0 auto 24px; opacity: 1; animation: fadeUp 0.8s ease-out 0.3s forwards; transform: translate3d(var(--hero-sub-x, 0px), var(--hero-sub-y, 0px), 0); will-change: transform; }
+    .chat-hint { display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--text-muted); background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); border-radius: 20px; padding: 6px 16px; margin-bottom: 36px; opacity: 1; animation: fadeUp 0.8s ease-out 0.45s forwards; transform: translate3d(var(--hero-hint-x, 0px), var(--hero-hint-y, 0px), 0); will-change: transform; }
     .chat-hint .chat-hint-icon { color: var(--accent); font-size: 0.9rem; }
-    .hero-stats { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s ease-out 0.55s forwards; transform: translate3d(var(--hero-stats-x, 0px), var(--hero-stats-y, 0px), 0); will-change: transform; }
+    .hero-stats { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; opacity: 1; animation: fadeUp 0.8s ease-out 0.55s forwards; transform: translate3d(var(--hero-stats-x, 0px), var(--hero-stats-y, 0px), 0); will-change: transform; }
     .stat { text-align: center; }
     .stat-value { font-family: var(--font-mono); font-size: 2.8rem; font-weight: 500; color: var(--accent); line-height: 1; }
     .stat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.12em; }
@@ -82,7 +82,7 @@
       radial-gradient(circle at top left, rgba(230,57,70,0.09), transparent 32%),
       linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
       var(--card-bg);
-      border: 1px solid var(--card-border); border-radius: var(--radius); padding: 22px 24px; cursor: pointer; transition: transform 0.32s ease, border-color 0.32s ease, box-shadow 0.32s ease, background 0.32s ease; position: relative; overflow: hidden; opacity: 0; transform: translateY(16px); transform-style: preserve-3d; will-change: transform; }
+      border: 1px solid var(--card-border); border-radius: var(--radius); padding: 22px 24px; cursor: pointer; transition: transform 0.32s ease, border-color 0.32s ease, box-shadow 0.32s ease, background 0.32s ease; position: relative; overflow: hidden; opacity: 1; transform: translateY(0); transform-style: preserve-3d; will-change: transform; }
     .card.visible { animation: cardIn 0.5s ease-out forwards; }
     @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
     .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), rgba(230,57,70,0.3)); transform: scaleX(0); transition: transform 0.4s ease; }
