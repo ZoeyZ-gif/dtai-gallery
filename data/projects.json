@@ -3,20 +3,21 @@
     {
       "id": "gha-report-generator",
       "name": "GHA报告生成器",
-      "version": "3.0",
-      "updateDate": "2026-04-09",
+      "version": "3.1",
+      "updateDate": "2026-04-11",
       "type": "Skill",
       "scopes": ["GHA探索之旅"],
       "highlights": "快速生成GHA探索之旅标准化报告，支持自选任意时间段，包含订单、社媒、客诉、投放、用户行为，并自动生成洞察分析。",
       "changelog": [
         "1. 新增执行回执功能，方便复核是否漏抓数据",
         "2. 优化Insight提示词，避免尖锐批评和不合理的建议",
-        "3. 增加第九页：当期入住率分析"
+        "3. 增加第九页：当期入住率分析",
+        "4. 现在能够更加兼容windows操作环境了"
       ],
       "qr": [
         {
           "label": "Skill 下载",
-          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkIf4ckQZ"
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkELej97a"
         }
       ]
     },
