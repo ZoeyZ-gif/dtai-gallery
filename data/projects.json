@@ -42,16 +42,18 @@
     {
       "id": "sm-monthly-report",
       "name": "Social Media月报生成器",
-      "version": "1.0",
+      "version": "1.1",
       "updateDate": "2026-04-12",
       "type": "Skill",
       "scopes": ["Social Media"],
       "highlights": "快速生成社交媒体月度报告，支持自选任意平台组合，自动生成洞察分析。需搭配【社交媒体源数据采集插件】使用。",
-      "changelog": [],
+      "changelog": [
+        "1. 新增下载ppt的功能"
+      ],
       "qr": [
         {
           "label": "Skill 下载",
-          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAk1MD7kuX"
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkSRrKDOD"
         },
         {
           "label": "历史数据空模板",
