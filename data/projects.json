@@ -40,6 +40,30 @@
       ]
     },
     {
+      "id": "sm-monthly-report",
+      "name": "Social Media月报生成器",
+      "version": "1.0",
+      "updateDate": "2026-04-12",
+      "type": "Skill",
+      "scopes": ["Social Media"],
+      "highlights": "快速生成社交媒体月度报告，支持自选任意平台组合，自动生成洞察分析。需搭配【社交媒体源数据采集插件】使用。",
+      "changelog": [],
+      "qr": [
+        {
+          "label": "Skill 下载",
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAk1MD7kuX"
+        },
+        {
+          "label": "历史数据空模板",
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkaUwkm9j"
+        },
+        {
+          "label": "使用说明和FAQ",
+          "url": "https://doc.weixin.qq.com/doc/w3_AEEA_wa-AKwK0viBGbFScaNwjOXOX?scode=AC0A-QctAAkQkRITo0"
+        }
+      ]
+    },
+    {
       "id": "sm-collector",
       "name": "社交媒体源数据采集插件",
       "version": "1.2",
@@ -66,7 +90,6 @@
     }
   ],
   "developing": [
-    { "id": "sm-monthly-report", "name": "Social Media月报生成器", "type": "Skill", "scopes": ["通用"], "highlights": "快速生成社交媒体月度报告，支持自选任意平台组合，自动生成洞察分析。需搭配【社交媒体源数据采集插件】使用。" },
     { "id": "peer-db-assistant", "name": "同业数据库助手", "type": "Skill", "scopes": ["B2B"], "highlights": "轻松获取全量同业数据库的用户分析报告，智能筛选潜在目标用户，一键唤醒沉睡用户。" },
     { "id": "geo-product", "name": "GEO产品", "type": "服务", "scopes": ["通用"], "highlights": "暂无" },
     { "id": "info-push", "name": "资讯定时推送", "type": "Skill", "scopes": ["通用"], "highlights": "定制自己部门需要资讯的内容类型、来源、格式、推送时间等，也可以定制客户品牌/目的地相关的内容，推送到指定渠道。" },
