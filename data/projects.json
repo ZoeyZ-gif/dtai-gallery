@@ -42,23 +42,24 @@
     {
       "id": "sm-monthly-report",
       "name": "Social Media月报生成器",
-      "version": "1.2",
-      "updateDate": "2026-04-16",
+      "version": "2.0",
+      "updateDate": "2026-04-22",
       "type": "Skill",
       "scopes": ["Social Media"],
       "highlights": "快速生成社交媒体月度报告，支持自选任意平台组合，自动生成洞察分析。需搭配【社交媒体源数据采集插件】使用。",
       "changelog": [
-        "1. 新增下载ppt的功能",
-        "2. 修复视频号和微博Best Practice分析中互动率过小时会*100的问题"
+        "1. 新增附加页中心：目前已提供Category Analysis和Media-buy Analysis功能，只需将【月报附加页配置中心.html】放在【月报数据】根目录即可升级为月报2.0。",
+        "2. 新增页面右上角上传Logo的功能",
+        "3. 修复视频号和微博Best Practice分析中互动率＜0.01时会放大100倍的问题"
       ],
       "qr": [
         {
           "label": "Skill 下载",
-          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkiKquooq"
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkt4kUAWL"
         },
         {
           "label": "历史数据空模板",
-          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkRMXSTcz"
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkGp1olgV"
         },
         {
           "label": "使用说明和FAQ",
