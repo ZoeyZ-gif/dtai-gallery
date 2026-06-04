@@ -42,24 +42,32 @@
     {
       "id": "sm-monthly-report",
       "name": "Social Media月报生成器",
-      "version": "2.0",
-      "updateDate": "2026-04-22",
+      "version": "v2.1",
+      "updateDate": "2026-06-04",
       "type": "Skill",
       "scopes": ["Social Media"],
       "highlights": "快速生成社交媒体月度报告，支持自选任意平台组合，自动生成洞察分析。需搭配【社交媒体源数据采集插件】使用。",
       "changelog": [
-        "1. 新增附加页中心：目前已提供Category Analysis和Media-buy Analysis功能，只需将【月报附加页配置中心.html】放在【月报数据】根目录即可升级为月报2.0。",
-        "2. 新增页面右上角上传Logo的功能",
-        "3. 修复视频号和微博Best Practice分析中互动率＜0.01时会放大100倍的问题"
+        "v2.1：新增自定义翻译表上传功能，优化并重构了报告的翻译功能，降低中文漏翻的情况。",
+        "v2.1：修复部分数据标签重叠的问题",
+        "v2.1：修复Key Highlights / Summary里的部分数据采样错误",
+        "v2.1：修复Content List大于1页时，每一页的数据条基数单独计算的问题",
+        "v2.1：首页封面图和最佳帖子截屏可以调整取景框了，并且导出pdf/ppt后的图片也会保留预览时的位置和大小",
+        "v2.1：月报预览html新增编辑模式，支持本地修改封面副标题、洞察、帖子标题",
+        "v2.1：修复超长logo显示bug",
+        "v2.1：下载后的ppt标题字体改为更常用的思源黑体，避免部分设备出现字体bug",
+        "v2.0：新增附加页中心：目前已提供Category Analysis和Media-buy Analysis功能，只需将【月报附加页配置中心.html】放在【月报数据】根目录即可升级为月报2.0。",
+        "v2.0：新增页面右上角上传Logo的功能",
+        "v2.0：修复视频号和微博Best Practice分析中互动率＜0.01时会放大100倍的问题"
       ],
       "qr": [
         {
           "label": "Skill 下载",
-          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkt4kUAWL"
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkVx3Dv0u"
         },
         {
           "label": "历史数据空模板",
-          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkGp1olgV"
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAk3mU1R4q"
         },
         {
           "label": "使用说明和FAQ",
