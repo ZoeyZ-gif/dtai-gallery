@@ -123,6 +123,7 @@
     .card:hover .card-changelog { border-color: rgba(230,57,70,0.18); }
     .changelog-label { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 7px; }
     .changelog-list { list-style: none; padding: 0; }
+    .changelog-list-card { max-height: calc(0.78rem * 1.5 * 5); overflow: hidden; position: relative; }
     .changelog-list li { font-size: 0.78rem; color: var(--text-secondary); padding: 2px 0 2px 12px; position: relative; line-height: 1.5; }
     .changelog-list li::before { content: '↑'; position: absolute; left: 0; color: var(--accent); font-size: 0.7rem; top: 2px; }
 
@@ -182,6 +183,9 @@
     .modal-body .modal-section:first-child { border-top: none; padding-top: 0; }
     .modal-section h4 { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
     .modal-section p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
+    .modal-changelog-group { padding: 12px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+    .modal-changelog-group:first-of-type { border-top: none; padding-top: 2px; }
+    .modal-changelog-version { display: inline-flex; align-items: center; font-family: var(--font-mono); font-size: 0.72rem; color: var(--green); background: rgba(46,204,113,0.08); border: 1px solid rgba(46,204,113,0.18); border-radius: 999px; padding: 2px 9px; margin-bottom: 8px; }
     .modal-changelog { list-style: none; padding: 0; }
     .modal-changelog li { font-size: 0.85rem; color: var(--text-secondary); padding: 3px 0 3px 14px; position: relative; line-height: 1.55; }
     .modal-changelog li::before { content: '↑'; position: absolute; left: 0; color: var(--accent); font-size: 0.7rem; top: 3px; }
@@ -406,22 +410,94 @@ function renderSimpleCards(projects, gridId, isPersonal) {
   observeCards(grid);
 }
 
+function getDisplayVersion(version) {
+  if (!version) return '';
+  const normalized = String(version).trim();
+  return normalized.toLowerCase().startsWith('v') ? normalized : `v${normalized}`;
+}
+
+function splitChangelogEntry(entry, fallbackVersion) {
+  const text = String(entry || '').trim();
+  const match = text.match(/^(v?\d+(?:\.\d+)*)(?:\s*[：:]\s*)(.+)$/i);
+  if (!match) {
+    return {
+      version: fallbackVersion || '近期更新',
+      text
+    };
+  }
+
+  return {
+    version: getDisplayVersion(match[1]),
+    text: match[2]
+  };
+}
+
+function groupChangelog(changelog, fallbackVersion) {
+  const groups = [];
+  const groupMap = new Map();
+
+  (changelog || []).forEach(entry => {
+    const item = splitChangelogEntry(entry, fallbackVersion);
+    if (!item.text) return;
+
+    if (!groupMap.has(item.version)) {
+      const group = { version: item.version, items: [] };
+      groupMap.set(item.version, group);
+      groups.push(group);
+    }
+    groupMap.get(item.version).items.push(item.text);
+  });
+
+  return groups;
+}
+
+function getChangelogItems(changelog, fallbackVersion) {
+  return groupChangelog(changelog, fallbackVersion).flatMap(group =>
+    group.items.map(text => ({ version: group.version, text }))
+  );
+}
+
+function renderCardChangelog(p) {
+  if (!p.changelog || !p.changelog.length) return '';
+
+  const items = getChangelogItems(p.changelog, getDisplayVersion(p.version));
+  const visibleItems = items.slice(0, 5);
+  const hiddenCount = Math.max(0, items.length - visibleItems.length);
+
+  return `<div class="card-changelog">
+    <div class="changelog-label">更新日志${hiddenCount ? ` · 另有 ${hiddenCount} 条` : ''}</div>
+    <ul class="changelog-list changelog-list-card">
+      ${visibleItems.map(item => `<li>${item.version}：${item.text}</li>`).join('')}
+    </ul>
+   </div>`;
+}
+
+function renderModalChangelog(p) {
+  if (!p.changelog || !p.changelog.length) return '';
+
+  const groups = groupChangelog(p.changelog, getDisplayVersion(p.version));
+  return `<div class="modal-section">
+    <h4>更新日志</h4>
+    ${groups.map(group => `<div class="modal-changelog-group">
+      <div class="modal-changelog-version">${group.version}</div>
+      <ul class="modal-changelog">
+        ${group.items.map(item => `<li>${item}</li>`).join('')}
+      </ul>
+    </div>`).join('')}
+   </div>`;
+}
+
 function makeCard(p, i, simple, isPersonal) {
   const card = document.createElement('div');
   card.className = 'card' + (simple ? ' card-simple' : '') + (isPersonal ? ' card-personal' : '');
   card.style.animationDelay = `${i * 70}ms`;
 
-  const versionBadge = p.version ? `<span class="card-version">v${p.version}</span>` : '';
+  const versionBadge = p.version ? `<span class="card-version">${getDisplayVersion(p.version)}</span>` : '';
   const dot = versionBadge && p.updateDate ? '<span class="card-dot">·</span>' : '';
   const dateStr = p.updateDate ? `<span class="card-date">${p.updateDate}</span>` : '';
   const metaRow = versionBadge || dateStr ? `<div class="card-meta">${versionBadge}${dot}${dateStr}</div>` : '';
 
-  const changelogHtml = p.changelog && p.changelog.length && !simple
-    ? `<div class="card-changelog">
-        <div class="changelog-label">更新日志</div>
-        <ul class="changelog-list">${p.changelog.map(e => `<li>${e}</li>`).join('')}</ul>
-       </div>`
-    : '';
+  const changelogHtml = !simple ? renderCardChangelog(p) : '';
 
   const scopes = Array.isArray(p.scopes) ? p.scopes.join('</span><span class="tag tag-client">') : '';
   const previewText = '获取下载链接';
@@ -527,12 +603,7 @@ function observeCards(container) {
 function openModal(p) {
   const modal = document.getElementById('modal-content');
 
-  const changelogHtml = p.changelog && p.changelog.length
-    ? `<div class="modal-section">
-        <h4>更新日志</h4>
-        <ul class="modal-changelog">${p.changelog.map(e => `<li>${e}</li>`).join('')}</ul>
-       </div>`
-    : '';
+  const changelogHtml = renderModalChangelog(p);
 
   let qrHtml = '';
   if (p.qr && p.qr.length > 0) {
@@ -545,7 +616,7 @@ function openModal(p) {
     </div>`;
   }
 
-  const versionDateLine = [p.version ? `v${p.version}` : '', p.updateDate || ''].filter(Boolean).join(' · ');
+  const versionDateLine = [getDisplayVersion(p.version), p.updateDate || ''].filter(Boolean).join(' · ');
   const metaVersionValue = versionDateLine || '待更新';
   const scopesLine = Array.isArray(p.scopes) && p.scopes.length ? p.scopes.join(' / ') : '通用';
 
@@ -578,8 +649,8 @@ function openModal(p) {
         <h4>项目说明</h4>
         <p>${p.highlights}</p>
       </div>
-      ${changelogHtml}
       ${qrHtml}
+      ${changelogHtml}
     </div>
   `;
 
