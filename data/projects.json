@@ -40,6 +40,24 @@
       ]
     },
     {
+      "id": "website-geo-optimizer",
+      "name": "Website GEO Optimizer",
+      "version": "1.1",
+      "updateDate": "2026-06-09",
+      "type": "Skill",
+      "scopes": ["BD", "Content"],
+      "highlights": "网站级GEO内容诊断与小规模改写助手，自动完成页面筛选、内容抽取、内容GEO评分、技术GEO评分、逐页改写稿，同时生成面向潜在客户的全英文Audit Report。",
+      "changelog": [
+        "v1.1：新增audit-only功能，跳过改写稿，仅生成Audit Report。"
+      ],
+      "qr": [
+        {
+          "label": "Skill 下载",
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAk20EEP0e"
+        }
+      ]
+    },
+    {
       "id": "sm-monthly-report",
       "name": "Social Media月报生成器",
       "version": "v2.1",
