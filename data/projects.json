@@ -76,6 +76,32 @@
       ]
     },
     {
+      "id": "sm-quarterly-report",
+      "name": "Social Media季报生成器",
+      "version": "1.0",
+      "updateDate": "2026-06-09",
+      "type": "Skill",
+      "scopes": ["Social Media"],
+      "highlights": "月报生成器的衍生skill，基于季度数据快速生成社交媒体季度报告，支持自选任意平台组合，自动生成洞察分析。需搭配【社交媒体源数据采集插件】使用。",
+      "changelog": [
+        "v1.0：首个版本上线，支持基于季度数据生成社交媒体季度报告。"
+      ],
+      "qr": [
+        {
+          "label": "Skill 下载",
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkp6Rxh75"
+        },
+        {
+          "label": "历史数据空模板",
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAk7O2l7Cr"
+        },
+        {
+          "label": "使用说明",
+          "url": "https://doc.weixin.qq.com/doc/w3_AEEA_wa-AKwK0viBGbFScaNwjOXOX?scode=AC0A-QctAAkAc0BSw7AEEA_wa-AKw"
+        }
+      ]
+    },
+    {
       "id": "sm-collector",
       "name": "社交媒体源数据采集插件",
       "version": "1.2",
