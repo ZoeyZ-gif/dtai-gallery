@@ -22,6 +22,28 @@
       ]
     },
     {
+      "id": "cta-monthly-report",
+      "name": "CTA月报生成器",
+      "version": "1.0",
+      "updateDate": "2026-06-12",
+      "type": "Skill",
+      "scopes": ["B2B"],
+      "highlights": "自动解析CTA平台导出的课程学习数据，按课程批量生成含数据图表、翻译校验、PDF/PPT 导出的客户月度报告，支持自定义日期范围。",
+      "changelog": [
+        "v1.0：首个版本上线，支持解析CTA课程学习数据并批量生成客户月度报告。"
+      ],
+      "qr": [
+        {
+          "label": "Skill 下载",
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkiTqso6x"
+        },
+        {
+          "label": "数据包样例",
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkTJfYB7i"
+        }
+      ]
+    },
+    {
       "id": "geo-reviewer",
       "name": "GEO Reviewer",
       "version": "1.1",
@@ -157,7 +179,6 @@
     { "id": "ga4-collector", "name": "GA4采集器", "type": "Skill", "scopes": ["Content"], "highlights": "快速生成GA平台的网站月报。" },
     { "id": "creative-library", "name": "创意案例库", "type": "Skill", "scopes": ["通用"], "highlights": "提供内部与外部资料的案例整理与汇总，并基于案例库提供提案idea和ppt初稿。" },
     { "id": "sm-toolbox", "name": "SM工具箱", "type": "Skill", "scopes": ["Social Media"], "highlights": "提供文案错别字、信息准确性检查、翻译统一、名词一致性、符号标准化等集成式文案专业服务。" },
-    { "id": "cta-report", "name": "CTA课程月报", "type": "Skill", "scopes": ["B2B"], "highlights": "快速生成CTA课程的月报，并结合市场上的产品现状和趋势给出洞察。" },
     { "id": "topic-assistant", "name": "选题助手", "type": "Skill", "scopes": ["Content", "Social Media", "Media"], "highlights": "可定制客户、渠道、内容类型，为你推荐选题，并给出钩子、展现形式、重点内容的撰写建议。" },
     { "id": "site-miniapp-qa-report", "name": "网站/小程序质检报告生成器", "type": "Skill", "scopes": ["Content"], "highlights": "生成从检查→优化方案→实施计划→验收标准的全套SEO与GEO质检报告" },
     { "id": "sales-bank", "name": "Sales bank", "type": "服务", "scopes": ["BD"], "highlights": "暂无" },
