@@ -180,7 +180,6 @@
     { "id": "creative-library", "name": "创意案例库", "type": "Skill", "scopes": ["通用"], "highlights": "提供内部与外部资料的案例整理与汇总，并基于案例库提供提案idea和ppt初稿。" },
     { "id": "sm-toolbox", "name": "SM工具箱", "type": "Skill", "scopes": ["Social Media"], "highlights": "提供文案错别字、信息准确性检查、翻译统一、名词一致性、符号标准化等集成式文案专业服务。" },
     { "id": "topic-assistant", "name": "选题助手", "type": "Skill", "scopes": ["Content", "Social Media", "Media"], "highlights": "可定制客户、渠道、内容类型，为你推荐选题，并给出钩子、展现形式、重点内容的撰写建议。" },
-    { "id": "site-miniapp-qa-report", "name": "网站/小程序质检报告生成器", "type": "Skill", "scopes": ["Content"], "highlights": "生成从检查→优化方案→实施计划→验收标准的全套SEO与GEO质检报告" },
     { "id": "sales-bank", "name": "Sales bank", "type": "服务", "scopes": ["BD"], "highlights": "暂无" },
     { "id": "video-analysis-agent", "name": "视频拉片Agent", "type": "Skill", "scopes": ["Video"], "highlights": "具有下载→智能拉片和文案提取功能的短视频智囊" },
     { "id": "research-dashboard-service", "name": "研究数据看板服务", "type": "服务", "scopes": ["Research"], "highlights": "定期从指定网址抓取并处理PDF、数据看板等多源数据，按国家与时间维度生成可配置频率的研究看板。" },
