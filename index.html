@@ -115,6 +115,7 @@
     .tag { font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; font-weight: 500; }
     .tag-type { background: rgba(243,156,18,0.1); color: var(--yellow); border: 1px solid rgba(243,156,18,0.25); }
     .tag-client { background: rgba(52,152,219,0.1); color: #6db3f2; border: 1px solid rgba(52,152,219,0.25); }
+    .tag-badge { background: rgba(46,204,113,0.1); color: var(--green); border: 1px solid rgba(46,204,113,0.25); }
 
     .card-highlights { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px; transition: transform 0.28s ease, color 0.28s ease; }
     .card:hover .card-highlights { color: #bdbdbd; }
@@ -500,6 +501,7 @@ function makeCard(p, i, simple, isPersonal) {
   const changelogHtml = !simple ? renderCardChangelog(p) : '';
 
   const scopes = Array.isArray(p.scopes) ? p.scopes.join('</span><span class="tag tag-client">') : '';
+  const badgeHtml = p.badge ? `<span class="tag tag-badge">${p.badge}</span>` : '';
   const previewText = '获取下载链接';
   const previewHtml = simple ? '' : `
     <div class="card-preview">
@@ -515,6 +517,7 @@ function makeCard(p, i, simple, isPersonal) {
     ${metaRow}
     <div class="card-title">${p.name}</div>
     <div class="card-tags">
+      ${badgeHtml}
       <span class="tag tag-type">${p.type}</span>
       ${scopes ? `<span class="tag tag-client">${scopes}</span>` : ''}
     </div>
@@ -621,6 +624,7 @@ function openModal(p) {
   const scopesLine = Array.isArray(p.scopes) && p.scopes.length ? p.scopes.join(' / ') : '通用';
 
   const scopes = Array.isArray(p.scopes) ? p.scopes.join('</span><span class="tag tag-client">') : '';
+  const badgeHtml = p.badge ? `<span class="tag tag-badge">${p.badge}</span>` : '';
 
   modal.innerHTML = `
     <button class="modal-close" onclick="closeModal()">✕</button>
@@ -629,6 +633,7 @@ function openModal(p) {
         <div class="modal-kicker">DTAI Gallery</div>
         <div class="modal-title">${p.name}</div>
         <div class="modal-tags">
+          ${badgeHtml}
           <span class="tag tag-type">${p.type}</span>
           ${scopes ? `<span class="tag tag-client">${scopes}</span>` : ''}
         </div>
