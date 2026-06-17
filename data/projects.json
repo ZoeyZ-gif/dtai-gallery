@@ -24,18 +24,19 @@
     {
       "id": "cta-monthly-report",
       "name": "CTA月报生成器",
-      "version": "1.0",
-      "updateDate": "2026-06-12",
+      "version": "1.1",
+      "updateDate": "2026-06-17",
       "type": "Skill",
       "scopes": ["B2B"],
       "highlights": "自动解析CTA平台导出的课程学习数据，按课程批量生成含数据图表、翻译校验、PDF/PPT 导出的客户月度报告，支持自定义日期范围。",
       "changelog": [
+        "v1.1：多课程客户新增了首页课程运营总览。",
         "v1.0：首个版本上线，支持解析CTA课程学习数据并批量生成客户月度报告。"
       ],
       "qr": [
         {
           "label": "Skill 下载",
-          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkk7ylwHh"
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkjZaNQFl"
         },
         {
           "label": "数据包样例",
