@@ -101,12 +101,13 @@
     {
       "id": "sm-monthly-report",
       "name": "Social Media月报生成器",
-      "version": "v2.1",
-      "updateDate": "2026-06-04",
+      "version": "2.2",
+      "updateDate": "2026-07-15",
       "type": "Skill",
       "scopes": ["Social Media"],
       "highlights": "快速生成社交媒体月度报告，支持自选任意平台组合，自动生成洞察分析。需搭配【社交媒体源数据采集插件】使用。",
       "changelog": [
+        "v2.2：原有谷歌翻译API替换为百度翻译API，无需科学上网。",
         "v2.1：新增自定义翻译表上传功能，优化并重构了报告的翻译功能，降低中文漏翻的情况。",
         "v2.1：修复部分数据标签重叠的问题",
         "v2.1：修复Key Highlights / Summary里的部分数据采样错误",
@@ -122,7 +123,7 @@
       "qr": [
         {
           "label": "Skill 下载",
-          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkVx3Dv0u"
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkps0kWqc"
         },
         {
           "label": "历史数据空模板",
