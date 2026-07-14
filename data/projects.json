@@ -81,6 +81,24 @@
       ]
     },
     {
+      "id": "website-monthly-report",
+      "name": "网站月报生成器",
+      "version": "1.0",
+      "updateDate": "2026-07-14",
+      "type": "Skill",
+      "scopes": ["Content"],
+      "highlights": "自动解析GA4拉取的网站数据，生成12页的全英文月度报告，支持PDF/PPT导出和在线文本编辑。",
+      "changelog": [
+        "v1.0：首个版本上线，支持生成12页全英文网站月度报告。"
+      ],
+      "qr": [
+        {
+          "label": "Skill 下载",
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAky7VdI1a"
+        }
+      ]
+    },
+    {
       "id": "sm-monthly-report",
       "name": "Social Media月报生成器",
       "version": "v2.1",
@@ -171,7 +189,6 @@
   "developing": [
     { "id": "peer-db-assistant", "name": "同业数据库助手", "type": "Skill", "scopes": ["B2B"], "badge": "即将上线", "highlights": "轻松获取全量同业数据库的用户分析报告，智能筛选潜在目标用户，一键唤醒沉睡用户。" },
     { "id": "kol-bank", "name": "KOL bank", "type": "服务", "scopes": ["KOL"], "badge": "即将上线", "highlights": "是KOL管理后台，同时也是KOL活动策划顾问，支持智能筛选合适的KOL并一键发送brief，评估并预测活动效果。" },
-    { "id": "website-monthly-report", "name": "网站月报生成器", "type": "Skill", "scopes": ["Content"], "badge": "即将上线", "highlights": "快速生成GA平台的网站月报。" },
     { "id": "smart-asset-hub", "name": "智能素材中台", "type": "Skill / 服务", "scopes": ["通用"], "badge": "即将上线", "highlights": "智能本地图库管理工具，AI解析图片内容、标签化索引并支持自然语义搜索，解决长期运营工作中素材库臃肿的问题。" },
     { "id": "info-push", "name": "资讯定时推送", "type": "Skill", "scopes": ["通用"], "highlights": "定制自己部门需要资讯的内容类型、来源、格式、推送时间等，也可以定制客户品牌/目的地相关的内容，推送到指定渠道。" },
     { "id": "auto-layout", "name": "自动排版生成器", "type": "Skill", "scopes": ["Social Media"], "highlights": "可根据用户上传的初次模板，在微信SVG代码的框架内自动排版。" },
