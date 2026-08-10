@@ -101,18 +101,19 @@
     {
       "id": "smart-asset-gallery-hub",
       "name": "智能素材图库中台",
-      "version": "1.0",
-      "updateDate": "2026-07-29",
+      "version": "1.5",
+      "updateDate": "2026-07-31",
       "type": "Skill / 本地服务",
       "scopes": ["通用"],
       "highlights": "不移动、不改名、不删除原图，安全接管本地素材库并建立缩略图、去重分组、失联恢复和回收站等资产索引。支持AI解析图片内容、自动标签化、自然语义搜索、相似图查找和素材使用记录，帮助团队快速找图、复用素材并减少素材库长期臃肿。",
       "changelog": [
+        "v1.5：新增找相似能力，支持按确定/推测地点、同稿件或项目、Tag包含/排除和时间范围查找相关素材，并自动排除参考图。",
         "v1.0：首个版本上线，支持本地图库接管、AI标注、语义搜索、重复图保护和素材使用记录。"
       ],
       "qr": [
         {
           "label": "Skill 下载",
-          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkSkbs5gU"
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAk83XP7kA"
         }
       ]
     },
