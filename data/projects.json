@@ -186,12 +186,13 @@
     {
       "id": "sm-collector",
       "name": "社交媒体源数据采集插件",
-      "version": "1.2",
-      "updateDate": "2026-04-09",
+      "version": "1.3",
+      "updateDate": "2026-08-13",
       "type": "插件",
       "scopes": ["Social Media"],
       "highlights": "一键采集五大主流社媒平台上官方不提供下载的公开数据，如主页爬虫、粉丝属性等，是使用报告生成器之前的必装插件。",
       "changelog": [
+        "v1.3：修复微博主页单条细目抓取不全的bug",
         "1. 嵌入微博数据中心外链，可直接跳转",
         "2. 自动抓取微博当前粉丝数，也支持粉丝过万的账号手动修改",
         "3. 修复7天内发布的微信图文日期格式特殊的问题",
@@ -200,7 +201,7 @@
       "qr": [
         {
           "label": "插件下载",
-          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAk1WXBzpg"
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkVYwSbaF"
         },
         {
           "label": "使用说明",
