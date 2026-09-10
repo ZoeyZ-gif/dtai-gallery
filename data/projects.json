@@ -164,19 +164,20 @@
     {
       "id": "sm-quarterly-report",
       "name": "Social Media季报生成器",
-      "version": "1.1",
-      "updateDate": "2026-07-15",
+      "version": "1.2",
+      "updateDate": "2026-09-10",
       "type": "Skill",
       "scopes": ["Social Media"],
       "highlights": "月报生成器的衍生skill，基于季度数据快速生成社交媒体季度报告，支持自选任意平台组合，自动生成洞察分析。需搭配【社交媒体源数据采集插件】使用。",
       "changelog": [
+        "v1.2：抖音月数据后台改版，支持解析新版数据表",
         "v1.1：原有谷歌翻译API替换为百度翻译API，无需科学上网。",
         "v1.0：首个版本上线，支持基于季度数据生成社交媒体季度报告。"
       ],
       "qr": [
         {
           "label": "Skill 下载",
-          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkx0XXG7g"
+          "url": "https://drive.weixin.qq.com/s?k=AC0A-QctAAkQeqkUUS"
         },
         {
           "label": "历史数据空模板",
